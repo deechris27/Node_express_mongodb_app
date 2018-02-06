@@ -4,7 +4,7 @@ var path = require('path');
 var expressValidator = require('express-validator');
 var mongojs = require('mongojs');
 var db = mongojs('customerapp', ['users']);
-
+var ObjectId = mongojs.ObjectId;
 var app = express();
 
 /* var logger = function(req, res, next){
@@ -105,10 +105,25 @@ app.post('/users/add', function(req,res){
        email_ID : req.body.email
    }
 
-      console.log('success');
+      db.users.insert(newUser, function(err, res){
+         if(err){
+         	console.log(err);
+         }
+         res.redirect('/');
+      });
 
      } //end of else
 
+});
+
+app.delete('/users/delete/:id', function(req, res){
+      db.users.remove({_id: ObjectId(req.params.id)}, function(err, result){
+          if(err){
+          	console.log(err);
+          }else{
+          	res.redirect('/');
+          }
+      });
 });
 
 app.listen(3000, function(){

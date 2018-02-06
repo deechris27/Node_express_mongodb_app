@@ -1,0 +1,17 @@
+{
+  "name": "third_nod",
+  "version": "1.0.0",
+  "description": "Customer Management App",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "body-parser": "*",
+    "ejs": "^2.5.7",
+    "express": "*",
+    "path": "^0.12.7"
+  },
+  "author": "Deepak",
+  "license": "ISC"
+}
